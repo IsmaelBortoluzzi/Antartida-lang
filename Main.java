@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.Object;
+import org.apache.commons.lang3.StringUtils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,8 +24,63 @@ public class Main {
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
-        } 
+        }
+
+        List<Variavel> listaDeVars = new LinkedList<>();
+ 
+        for (String linha : linhas) {
+            
+            if(linha.isEmpty()) continue;
+            
+            String[] cpy;
+            linha = linha.trim();
+
+            if (linha.startsWith("int")) { 
+
+                linha = linha.substring(3);
+                linha = linha.replaceAll(" ", "");
+                cpy = linha.split("=");
+
+                listaDeVars.add(new VarInt(cpy[0], Integer.parseInt(cpy[1]))); 
+                
+            } else if (linha.startsWith("float")) {
+                
+                linha = linha.substring(5);
+                linha = linha.replaceAll(" ", "");
+                cpy = linha.split("=");
+                listaDeVars.add(new VarDouble(cpy[0], Double.parseDouble(cpy[1]))); 
+                
+            } else if (linha.startsWith("str")) {
+                
+                linha = linha.substring(3);
+                linha = linha.replaceAll(" ", "");
+                cpy = linha.split("=");
+                listaDeVars.add(new VarStr(cpy[0], cpy[1]));
+            
+            } else if (linha.startsWith("att")) {
+
+                linha = linha.substring(3);
+                linha = linha.replaceAll(" ", "");
+                cpy = linha.split("=");
+
+
+            }
+
+        }
+
         
+        System.out.println(listaDeVars.get(0).getName() + ": " + listaDeVars.get(0).getValorAsString());
+
+/*
+
+        for (VarInt v : listaDeVars) {
+
+            if (cpy[1].equals(v)) {
+                listaDeVars.add(new VarInt(cpy[0], v )); 
+            } 
+
+        }
+
         List<Variavel> lista = new LinkedList<>();
 
         lista.add(new VarDouble("a", 28.98));
@@ -49,7 +106,9 @@ public class Main {
         f[0] = lista.get(0);
         f[1] = lista.get(1);
 
-        System.out.println(Operacoes.eval(lista.get(0).getValorAsString() + "%" + "2"));
-    }
 
+        System.out.println(Operacoes.eval(lista.get(0).getValorAsString() + "%" + "2"));
+        */
+    }
 }
+

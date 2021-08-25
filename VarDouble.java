@@ -7,7 +7,7 @@ public class VarDouble extends Variavel{
         this.valor = valor;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
     public String getValorAsString() {
@@ -19,5 +19,5 @@ public class VarDouble extends Variavel{
         }
         this.valor = (Double)valor;
     }
-
+    
 }

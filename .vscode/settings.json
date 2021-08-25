@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "D:/Downloads/commons-lang3-3.12.0-bin/commons-lang3-3.12.0",
+        "d:\\Downloads\\commons-lang3-3.12.0-bin\\commons-lang3-3.12.0\\commons-lang3-3.12.0.jar",
+        "d:\\Downloads\\commons-lang3-3.12.0-bin\\commons-lang3-3.12.0\\commons-lang3-3.12.0-sources.jar"
+    ]
+}

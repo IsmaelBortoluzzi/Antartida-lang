@@ -1,3 +1,2 @@
-
-int a = 12;
-double b = 24.6
+int a = 12
+int a=4
