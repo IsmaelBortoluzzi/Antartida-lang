@@ -1,10 +1,26 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
-    
     public static void main(String[] args) {
+        
+        String path = "C:\\Users\\ismae\\Documents\\vscode_workspace\\modelo.txt";
 
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line = br.readLine();
+            
+            while (line != null) {
+                System.out.println(line);
+                line = br.readLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        } 
+        
         List<Variavel> lista = new LinkedList<>();
 
         lista.add(new VarDouble("a", 28.98));

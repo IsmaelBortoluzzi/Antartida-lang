@@ -44,7 +44,7 @@ public final class Operacoes {
                 for (;;) {
                     if      (eat('*')) x *= parseFactor(); // multiplication
                     else if (eat('/')) x /= parseFactor(); // division
-                    else if (eat('%')) x %= parseFactor(); // modulo
+                    else if (eat('%')) x %= parseFactor(); // module
                     else return x;
                 }
             }
