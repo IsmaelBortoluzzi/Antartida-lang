@@ -10,6 +10,9 @@ public class VarInt extends Variavel {
     public Object getValor() {
         return valor;
     }
+    public String getValorAsString() {
+        return Integer.toString(this.valor);
+    }
 
     public void setValor(Object valor) {
         if (!(valor instanceof Integer)) {

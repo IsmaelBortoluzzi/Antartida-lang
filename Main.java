@@ -13,7 +13,7 @@ public class Main {
         
         for(Variavel var : lista) {
 
-            System.out.println(var.getName() + ": " + var.getValor());
+            System.out.println(var.getName() + ": " + var.getValorAsString());
            
            //if (var instanceof VarDouble) {
            //    System.out.println(((VarDouble) var).getValor());
@@ -32,8 +32,7 @@ public class Main {
         f[0] = lista.get(0);
         f[1] = lista.get(1);
 
-        Double soma1 = Operacoes.soma(f);
-        System.out.println(soma1);
+        System.out.println(Operacoes.eval(lista.get(0).getValorAsString() + "%" + "2"));
     }
 
 }
