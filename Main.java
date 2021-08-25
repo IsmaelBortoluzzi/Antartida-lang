@@ -13,20 +13,27 @@ public class Main {
         
         for(Variavel var : lista) {
 
-            System.out.print(var.getName() + ": ");
-            if (var instanceof VarDouble) {
-                System.out.println(((VarDouble) var).getValor());
-            
-            } else if (var instanceof VarInt) {
-                System.out.println(((VarInt) var).getValor());
-            
-            } else if (var instanceof VarStr) {
-                System.out.println(((VarStr) var).getValor());
-            
-            }
+            System.out.println(var.getName() + ": " + var.getValor());
+           
+           //if (var instanceof VarDouble) {
+           //    System.out.println(((VarDouble) var).getValor());
+           //
+           //} else if (var instanceof VarInt) {
+           //    System.out.println(((VarInt) var).getValor());
+           //
+           //} else if (var instanceof VarStr) {
+           //    System.out.println(((VarStr) var).getValor());
+           //
+           //
+
 
         }
+        Variavel[] f = new Variavel[2];
+        f[0] = lista.get(0);
+        f[1] = lista.get(1);
 
+        Double soma1 = Operacoes.soma(f);
+        System.out.println(soma1);
     }
 
 }

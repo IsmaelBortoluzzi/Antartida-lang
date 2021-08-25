@@ -9,5 +9,7 @@ public abstract class Variavel {
     public String getName() {
         return name;
     }
-    
+
+    public abstract Object getValor();
+    public abstract void setValor(Object obj);
 }

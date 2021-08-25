@@ -7,12 +7,15 @@ public class VarDouble extends Variavel{
         this.valor = valor;
     }
 
-    public Double getValor() {
+    public Object getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setValor(Object valor) {
+        if (!(valor instanceof Double)) {
+            return;
+        }
+        this.valor = (Double)valor;
     }
 
 }

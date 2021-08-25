@@ -7,12 +7,15 @@ public class VarStr extends Variavel{
         this.valor = valor;
     }
 
-    public String getValor() {
+    public Object getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setValor(Object valor) {
+        if (!(valor instanceof String)) {
+            return;
+        }
+        this.valor = (String)valor;
     }
 
 }

@@ -7,12 +7,15 @@ public class VarInt extends Variavel {
         this.valor = valor;
     }
 
-    public Integer getValor() {
+    public Object getValor() {
         return valor;
     }
 
-    public void setValor(Integer valor) {
-        this.valor = valor;
+    public void setValor(Object valor) {
+        if (!(valor instanceof Integer)) {
+            return;
+        }
+        this.valor = (Integer)valor;
     }
 
 }
