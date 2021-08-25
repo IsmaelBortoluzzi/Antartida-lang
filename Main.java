@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.io.BufferedReader;
@@ -7,13 +8,15 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         
-        String path = "C:\\Users\\ismae\\Documents\\vscode_workspace\\modelo.txt";
+        String path = "modelo.txt";
+        ArrayList<String> linhas = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
             
             while (line != null) {
                 System.out.println(line);
+                linhas.add(line);
                 line = br.readLine();
             }
 
@@ -39,9 +42,7 @@ public class Main {
            //
            //} else if (var instanceof VarStr) {
            //    System.out.println(((VarStr) var).getValor());
-           //
-           //
-
+           //}
 
         }
         Variavel[] f = new Variavel[2];

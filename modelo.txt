@@ -1,0 +1,3 @@
+
+int a = 12;
+double b = 24.6
