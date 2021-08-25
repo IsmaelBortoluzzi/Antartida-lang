@@ -1,3 +1,4 @@
+package fonte;
 public final class Operacoes {
     
     public static Double soma(Variavel[] vect) {

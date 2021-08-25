@@ -1,3 +1,4 @@
+package fonte;
 public class VarDouble extends Variavel{
     
     private Double valor;
@@ -7,8 +8,12 @@ public class VarDouble extends Variavel{
         this.valor = valor;
     }
 
-    public Object getValor() {
+    public Double getValor() {
         return valor;
+    }
+
+    public String getValorAsString() {
+        return String.format("%lf", this.valor);
     }
 
     public void setValor(Object valor) {

@@ -1,3 +1,4 @@
+package fonte;
 public abstract class Variavel {
 
     private String name;
@@ -10,6 +11,6 @@ public abstract class Variavel {
         return name;
     }
 
-    public abstract Object getValor();
+    public abstract String getValorAsString();
     public abstract void setValor(Object obj);
 }

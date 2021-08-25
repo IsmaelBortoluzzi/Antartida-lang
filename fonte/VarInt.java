@@ -1,3 +1,4 @@
+package fonte;
 public class VarInt extends Variavel {
     
     private Integer valor;
@@ -7,9 +8,13 @@ public class VarInt extends Variavel {
         this.valor = valor;
     }
 
-    public Object getValor() {
+    public Integer getValor() {
         return valor;
     }
+    public String getValorAsString() {
+        return String.format("%d", this.valor);
+    }
+
 
     public void setValor(Object valor) {
         if (!(valor instanceof Integer)) {

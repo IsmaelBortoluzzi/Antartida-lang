@@ -1,3 +1,5 @@
+package fonte;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class Main {
         
         for(Variavel var : lista) {
 
-            System.out.println(var.getName() + ": " + var.getValor());
+            System.out.println(var.getName() + ": " + var.getValorAsString());
            
            //if (var instanceof VarDouble) {
            //    System.out.println(((VarDouble) var).getValor());
