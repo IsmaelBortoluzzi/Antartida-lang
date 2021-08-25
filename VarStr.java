@@ -11,11 +11,8 @@ public class VarStr extends Variavel{
         return this.valor;
     }
 
-    public void setValor(Object valor) {
-        if (!(valor instanceof String)) {
-            return;
-        }
-        this.valor = (String)valor;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
 }

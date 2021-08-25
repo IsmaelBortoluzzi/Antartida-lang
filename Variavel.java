@@ -11,5 +11,5 @@ public abstract class Variavel {
     }
 
     public abstract String getValorAsString();
-    public abstract void setValor(Object obj);
+    public abstract void setValor(String valor);
 }

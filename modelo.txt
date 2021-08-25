@@ -1,2 +1,4 @@
 int a = 12
-int a=4
+int b=4
+str p="lagarto"
+att b=a

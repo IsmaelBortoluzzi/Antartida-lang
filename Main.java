@@ -2,13 +2,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.lang.Object;
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+
+        //System.out.println(StringUtils.isNumeric("23"));
         
         String path = "modelo.txt";
         ArrayList<String> linhas = new ArrayList<>();
@@ -55,6 +57,8 @@ public class Main {
                 linha = linha.substring(3);
                 linha = linha.replaceAll(" ", "");
                 cpy = linha.split("=");
+                cpy[1] = cpy[1].substring(1, (cpy[1].length()-1));
+
                 listaDeVars.add(new VarStr(cpy[0], cpy[1]));
             
             } else if (linha.startsWith("att")) {
@@ -63,13 +67,26 @@ public class Main {
                 linha = linha.replaceAll(" ", "");
                 cpy = linha.split("=");
 
+                
+                for (Variavel v : listaDeVars) {
+                    if (cpy[0].equals(v.getName())) {                        
+                        for (Variavel s : listaDeVars) {
 
+                            if (cpy[1].equals(s.getName())) {
+                                v.setValor(s.getValorAsString());
+                            }
+
+                        }
+                    } 
+                }
             }
-
         }
 
         
         System.out.println(listaDeVars.get(0).getName() + ": " + listaDeVars.get(0).getValorAsString());
+        System.out.println(listaDeVars.get(1).getName() + ": " + listaDeVars.get(1).getValorAsString());
+        System.out.println(listaDeVars.get(2).getName() + ": " + listaDeVars.get(2).getValorAsString());
+        System.out.println(listaDeVars.size());
 
 /*
 

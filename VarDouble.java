@@ -13,11 +13,8 @@ public class VarDouble extends Variavel{
     public String getValorAsString() {
         return Double.toString(this.valor);
     }
-    public void setValor(Object valor) {
-        if (!(valor instanceof Double)) {
-            return;
-        }
-        this.valor = (Double)valor;
+    public void setValor(String valor) {
+        this.valor = Double.parseDouble(valor);
     }
     
 }

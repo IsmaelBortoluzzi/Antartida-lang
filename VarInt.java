@@ -14,11 +14,8 @@ public class VarInt extends Variavel {
         return Integer.toString(this.valor);
     }
 
-    public void setValor(Object valor) {
-        if (!(valor instanceof Integer)) {
-            return;
-        }
-        this.valor = (Integer)valor;
+    public void setValor(String valor) {
+        this.valor = Integer.parseInt(valor);
     }
 
 }
