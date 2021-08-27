@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.lang.Object;
+import java.util.Locale;
+//import java.lang.Object;
 //import org.apache.commons.lang3.StringUtils;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -34,58 +35,115 @@ public class Main {
             
             if(linha.isEmpty()) continue;
             
-            String[] cpy;
+            String[] splitted;
             linha = linha.trim();
 
             if (linha.startsWith("int")) { 
 
                 linha = linha.substring(3);
                 linha = linha.replaceAll(" ", "");
-                cpy = linha.split("=");
+                splitted = linha.split("=");
 
-                listaDeVars.add(new VarInt(cpy[0], Integer.parseInt(cpy[1]))); 
+                boolean jaExiste = false;
+                for (Variavel v : listaDeVars) {
+                    
+                    if(v.getName().equals(splitted[0])) {
+                        v.setValor(splitted[1]);
+                        jaExiste = true;
+                        break;
+                    }
+                }
+
+                if(!jaExiste) listaDeVars.add(new VarInt(splitted[0], Integer.parseInt(splitted[1]))); 
                 
             } else if (linha.startsWith("float")) {
                 
                 linha = linha.substring(5);
                 linha = linha.replaceAll(" ", "");
-                cpy = linha.split("=");
-                listaDeVars.add(new VarDouble(cpy[0], Double.parseDouble(cpy[1]))); 
+                splitted = linha.split("=");
+
+                boolean jaExiste = false;
+                for (Variavel v : listaDeVars) {
+                    
+                    if(v.getName().equals(splitted[0])) {
+                        v.setValor(splitted[1]);
+                        jaExiste = true;
+                        break;
+                    }
+                }
+
+                if(!jaExiste) listaDeVars.add(new VarDouble(splitted[0], Double.parseDouble(splitted[1]))); 
+                
                 
             } else if (linha.startsWith("str")) {
                 
                 linha = linha.substring(3);
                 linha = linha.replaceAll(" ", "");
-                cpy = linha.split("=");
-                cpy[1] = cpy[1].substring(1, (cpy[1].length()-1));
-
-                listaDeVars.add(new VarStr(cpy[0], cpy[1]));
+                splitted = linha.split("=");
+                splitted[1] = splitted[1].substring(1, (splitted[1].length()-1));
+                
+                boolean jaExiste = false;
+                for (Variavel v : listaDeVars) {
+                    
+                    if(v.getName().equals(splitted[0])) {
+                        v.setValor(splitted[1]);
+                        jaExiste = true;
+                        break;
+                    }
+                }
+                if(!jaExiste) listaDeVars.add(new VarStr(splitted[0], splitted[1]));
             
             } else if (linha.startsWith("att")) {
 
                 linha = linha.substring(3);
                 linha = linha.replaceAll(" ", "");
-                cpy = linha.split("=");
-
+                splitted = linha.split("=");
                 
-                for (Variavel v : listaDeVars) {
-                    if (cpy[0].equals(v.getName())) {                        
-                        for (Variavel s : listaDeVars) {
+                if (splitted[1].startsWith("$")) {
 
-                            if (cpy[1].equals(s.getName())) {
-                                v.setValor(s.getValorAsString());
-                            }
+                    splitted[1] = splitted[1].substring(1);
+                    //problema...
 
+                    /*
+                    String[] vectConta = splitted[1].split("'");
+                    System.out.println(vectConta[0]);
+
+                    for (Variavel v : listaDeVars) {
+                        
+                        for (String s : vectConta) {
+                            if (s.equals(v.getName())) s.replaceAll(v.getName(), v.getValorAsString());
                         }
-                    } 
+
+                    }
+                    splitted[1] = String.join("", vectConta);
+                    
+                    for (Variavel v : listaDeVars) {
+                        if (splitted[0].equals(v.getName())) {
+                            v.setValor(Double.toString(Operacoes.eval(splitted[1])));
+                        }
+                    }*/ 
+                } 
+                else {
+                    for (Variavel v : listaDeVars) {
+                        if (splitted[0].equals(v.getName())) {                        
+                            for (Variavel s : listaDeVars) {
+
+                                if (splitted[1].equals(s.getName())) {
+                                    v.setValor(s.getValorAsString());
+                                    break;
+                                }
+
+                            }
+                            break;
+                        } 
+                    }
                 }
             }
         }
 
-        
-        System.out.println(listaDeVars.get(0).getName() + ": " + listaDeVars.get(0).getValorAsString());
-        System.out.println(listaDeVars.get(1).getName() + ": " + listaDeVars.get(1).getValorAsString());
-        System.out.println(listaDeVars.get(2).getName() + ": " + listaDeVars.get(2).getValorAsString());
+        for (int i = 0; i<listaDeVars.size(); i++) {
+            System.out.println(listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
+        }
         System.out.println(listaDeVars.size());
 
 /*
