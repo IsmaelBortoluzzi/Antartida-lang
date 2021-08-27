@@ -1,4 +1,9 @@
 int a = 12
 int b=4
 str p="lagarto"
+str p = "leopardo"
 att b=a
+float arrois = 23.3
+float feijao = 34.984
+att arrois = $'feijao' * 2
+ 

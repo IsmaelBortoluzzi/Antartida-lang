@@ -33,7 +33,7 @@ public class Main {
  
         for (String linha : linhas) {
             
-            if(linha.isEmpty()) continue;
+            if(linha.isEmpty() || linha.startsWith("//")) continue;
             
             String[] splitted;
             linha = linha.trim();
@@ -102,18 +102,16 @@ public class Main {
                 if (splitted[1].startsWith("$")) {
 
                     splitted[1] = splitted[1].substring(1);
-                    //problema...
-
-                    /*
                     String[] vectConta = splitted[1].split("'");
-                    System.out.println(vectConta[0]);
 
                     for (Variavel v : listaDeVars) {
                         
-                        for (String s : vectConta) {
-                            if (s.equals(v.getName())) s.replaceAll(v.getName(), v.getValorAsString());
+                        for (int i = 0; i<vectConta.length; i++) {
+                            if (vectConta[i].equals(v.getName())) {
+                                vectConta[i] = vectConta[i].replaceAll(v.getName(), v.getValorAsString());
+                            }
+                            
                         }
-
                     }
                     splitted[1] = String.join("", vectConta);
                     
@@ -121,7 +119,7 @@ public class Main {
                         if (splitted[0].equals(v.getName())) {
                             v.setValor(Double.toString(Operacoes.eval(splitted[1])));
                         }
-                    }*/ 
+                    } 
                 } 
                 else {
                     for (Variavel v : listaDeVars) {
