@@ -15,6 +15,11 @@ public class VarInt extends Variavel {
     }
 
     public void setValor(String valor) {
+        
+        if(valor.contains(".")) {
+            valor = valor.split("\\.")[0];
+        }
+
         this.valor = Integer.parseInt(valor);
     }
 

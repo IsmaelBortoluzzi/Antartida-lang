@@ -1,9 +1,13 @@
-int a = 12
+int a = 27
 int b=4
 str p="lagarto"
 str p = "leopardo"
 att b=a
 float arrois = 23.3
 float feijao = 34.984
-att arrois = $'feijao' * 2
- 
+att arrois = $'feijao' * 2 / 2 * 'arrois'
+att feijao = $   'feijao' + 1
+att a = $'a' / 2
+//prints "Abacaxi dourado com arrois parmesao"
+//prints" "
+

@@ -100,7 +100,7 @@ public class Main {
                 splitted = linha.split("=");
                 
                 if (splitted[1].startsWith("$")) {
-
+                    splitted[1] = splitted[1].trim();
                     splitted[1] = splitted[1].substring(1);
                     String[] vectConta = splitted[1].split("'");
 
@@ -136,6 +136,12 @@ public class Main {
                         } 
                     }
                 }
+            }
+            else if (linha.startsWith("prints")) {
+                linha = linha.substring(6);
+                linha = linha.trim();
+                linha = linha.substring(1, (linha.length()-1));
+                System.out.println(linha);
             }
         }
 
