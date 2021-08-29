@@ -56,9 +56,9 @@ public class Main {
 
                 if(!jaExiste) listaDeVars.add(new VarInt(splitted[0], Integer.parseInt(splitted[1]))); 
                 
-            } else if (linha.startsWith("float")) {
+            } else if (linha.startsWith("real")) {
                 
-                linha = linha.substring(5);
+                linha = linha.substring(4);
                 linha = linha.replaceAll(" ", "");
                 splitted = linha.split("=");
 
@@ -140,15 +140,31 @@ public class Main {
             else if (linha.startsWith("prints")) {
                 linha = linha.substring(6);
                 linha = linha.trim();
-                linha = linha.substring(1, (linha.length()-1));
-                System.out.println(linha);
+
+                if(linha.startsWith("\"") && linha.endsWith("\"")) {
+
+                    linha = linha.substring(1, (linha.length()-1));
+                    System.out.print(linha);
+                }
+                else if(linha.startsWith("$")){
+                    linha = linha.substring(1);
+
+                    for (Variavel var : listaDeVars) {
+                        if(var.getName().equals(linha)){
+                            var.printVar();
+                        }
+                    }
+                }
+                else if (linha.startsWith(";")) {
+                    System.out.println();
+                }
             }
         }
 
         for (int i = 0; i<listaDeVars.size(); i++) {
-            System.out.println(listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
+            System.out.println("    "+listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
         }
-        System.out.println(listaDeVars.size());
+        System.out.println("    "+listaDeVars.size());
 
 /*
 

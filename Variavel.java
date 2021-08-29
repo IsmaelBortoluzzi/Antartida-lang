@@ -10,6 +10,10 @@ public abstract class Variavel {
         return name;
     }
 
+    public void printVar() {
+        System.out.print(this.getValorAsString());
+    }
+
     public abstract String getValorAsString();
     public abstract void setValor(String valor);
 }
