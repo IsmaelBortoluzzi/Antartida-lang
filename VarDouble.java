@@ -2,7 +2,8 @@ public class VarDouble extends Variavel{
     
     private Double valor;
 
-    public VarDouble(String name, Double valor) {
+    public VarDouble(String name, double valor){
+
         super(name);
         this.valor = valor;
     }

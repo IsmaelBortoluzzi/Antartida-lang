@@ -3,6 +3,9 @@ int b=4
 str p="lagarto"
 str p = "leopardo"
 att b=a
+prints $b
+prints;
+beginif b+1 = 4
 real arrois = 23.3
 real feijao = 34.984
 att arrois = $'feijao' * 2 / 2 * 'arrois'
@@ -14,3 +17,12 @@ prints "Abacaxi dourado com arrois parmesao"
 prints;
 prints $feijao
 prints;
+
+
+startif 5>3
+
+    int a = 37
+
+
+
+endif

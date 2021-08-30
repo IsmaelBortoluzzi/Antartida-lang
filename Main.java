@@ -20,7 +20,7 @@ public class Main {
             String line = br.readLine();
             
             while (line != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 linhas.add(line);
                 line = br.readLine();
             }
@@ -31,140 +31,9 @@ public class Main {
 
         List<Variavel> listaDeVars = new LinkedList<>();
  
-        for (String linha : linhas) {
-            
-            if(linha.isEmpty() || linha.startsWith("//")) continue;
-            
-            String[] splitted;
-            linha = linha.trim();
-
-            if (linha.startsWith("int")) { 
-
-                linha = linha.substring(3);
-                linha = linha.replaceAll(" ", "");
-                splitted = linha.split("=");
-
-                boolean jaExiste = false;
-                for (Variavel v : listaDeVars) {
-                    
-                    if(v.getName().equals(splitted[0])) {
-                        v.setValor(splitted[1]);
-                        jaExiste = true;
-                        break;
-                    }
-                }
-
-                if(!jaExiste) listaDeVars.add(new VarInt(splitted[0], Integer.parseInt(splitted[1]))); 
-                
-            } else if (linha.startsWith("real")) {
-                
-                linha = linha.substring(4);
-                linha = linha.replaceAll(" ", "");
-                splitted = linha.split("=");
-
-                boolean jaExiste = false;
-                for (Variavel v : listaDeVars) {
-                    
-                    if(v.getName().equals(splitted[0])) {
-                        v.setValor(splitted[1]);
-                        jaExiste = true;
-                        break;
-                    }
-                }
-
-                if(!jaExiste) listaDeVars.add(new VarDouble(splitted[0], Double.parseDouble(splitted[1]))); 
-                
-                
-            } else if (linha.startsWith("str")) {
-                
-                linha = linha.substring(3);
-                linha = linha.replaceAll(" ", "");
-                splitted = linha.split("=");
-                splitted[1] = splitted[1].substring(1, (splitted[1].length()-1));
-                
-                boolean jaExiste = false;
-                for (Variavel v : listaDeVars) {
-                    
-                    if(v.getName().equals(splitted[0])) {
-                        v.setValor(splitted[1]);
-                        jaExiste = true;
-                        break;
-                    }
-                }
-                if(!jaExiste) listaDeVars.add(new VarStr(splitted[0], splitted[1]));
-            
-            } else if (linha.startsWith("att")) {
-
-                linha = linha.substring(3);
-                linha = linha.replaceAll(" ", "");
-                splitted = linha.split("=");
-                
-                if (splitted[1].startsWith("$")) {
-                    splitted[1] = splitted[1].trim();
-                    splitted[1] = splitted[1].substring(1);
-                    String[] vectConta = splitted[1].split("'");
-
-                    for (Variavel v : listaDeVars) {
-                        
-                        for (int i = 0; i<vectConta.length; i++) {
-                            if (vectConta[i].equals(v.getName())) {
-                                vectConta[i] = vectConta[i].replaceAll(v.getName(), v.getValorAsString());
-                            }
-                            
-                        }
-                    }
-                    splitted[1] = String.join("", vectConta);
-                    
-                    for (Variavel v : listaDeVars) {
-                        if (splitted[0].equals(v.getName())) {
-                            v.setValor(Double.toString(Operacoes.eval(splitted[1])));
-                        }
-                    } 
-                } 
-                else {
-                    for (Variavel v : listaDeVars) {
-                        if (splitted[0].equals(v.getName())) {                        
-                            for (Variavel s : listaDeVars) {
-
-                                if (splitted[1].equals(s.getName())) {
-                                    v.setValor(s.getValorAsString());
-                                    break;
-                                }
-
-                            }
-                            break;
-                        } 
-                    }
-                }
-            }
-            else if (linha.startsWith("prints")) {
-                linha = linha.substring(6);
-                linha = linha.trim();
-
-                if(linha.startsWith("\"") && linha.endsWith("\"")) {
-
-                    linha = linha.substring(1, (linha.length()-1));
-                    System.out.print(linha);
-                }
-                else if(linha.startsWith("$")){
-                    linha = linha.substring(1);
-
-                    for (Variavel var : listaDeVars) {
-                        if(var.getName().equals(linha)){
-                            var.printVar();
-                        }
-                    }
-                }
-                else if (linha.startsWith(";")) {
-                    System.out.println();
-                }
-            }
-        }
-
-        for (int i = 0; i<listaDeVars.size(); i++) {
-            System.out.println("    "+listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
-        }
-        System.out.println("    "+listaDeVars.size());
+        Interpretador Interpreta = new Interpretador(listaDeVars,linhas);
+        Interpreta.Executa();
+        
 
 /*
 
