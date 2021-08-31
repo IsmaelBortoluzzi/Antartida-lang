@@ -3,15 +3,7 @@ import java.util.ArrayList;
 
 public class Interpretador {
 
-    List<Variavel> listaDeVars;
-    ArrayList<String> linhas;
-
-    public Interpretador(List<Variavel> listaDeVars, ArrayList<String> linhas) {
-        this.listaDeVars = listaDeVars;
-        this.linhas = linhas;
-    }
-
-    private String replaceVars(String[] vect) {
+    private static String replaceVars(String[] vect, List<Variavel> listaDeVars) {
         
         for (Variavel v : listaDeVars) {
             
@@ -25,8 +17,9 @@ public class Interpretador {
         
         return String.join("", vect);
     }
+    
 
-    public void Executa(){
+    public static void Executa(List<Variavel> listaDeVars, ArrayList<String> linhas){
 
         for (int i = 0; i < linhas.size(); i++) {
             
@@ -78,8 +71,10 @@ public class Interpretador {
             } else if (linha.startsWith("str")) {
                 
                 linha = linha.substring(3);
-                linha = linha.replaceAll(" ", "");
                 splitted = linha.split("=");
+                splitted[0] = splitted[0].trim();
+                splitted[1] = splitted[1].trim();
+
                 splitted[1] = splitted[1].substring(1, (splitted[1].length()-1));
                 
                 boolean jaExiste = false;
@@ -104,16 +99,7 @@ public class Interpretador {
                     splitted[1] = splitted[1].substring(1);
                     String[] vectConta = splitted[1].split("'");
 
-                    //for (Variavel v : listaDeVars) {
-                    //    
-                    //    for (int k = 0; k<vectConta.length; k++) {
-                    //        if (vectConta[k].equals(v.getName())) {
-                    //            vectConta[k] = vectConta[k].replaceAll(v.getName(), v.getValorAsString());
-                    //        }
-                    //        
-                    //    }
-                    //}
-                    splitted[1] = replaceVars(vectConta);
+                    splitted[1] = replaceVars(vectConta, listaDeVars);
                     
                     for (Variavel v : listaDeVars) {
                         if (splitted[0].equals(v.getName())) {
@@ -164,18 +150,21 @@ public class Interpretador {
 
                 ArrayList<String> linhasDoIf = new ArrayList<>();
                 String linhaDoIf = linha.substring(7);
-                linha.trim();
+                linhaDoIf = linhaDoIf.trim();
 
-                String[] vectBool = linha.split("'");
-                linha= replaceVars(vectBool);
+                String[] vectBool = linhaDoIf.split("'");
+                linhaDoIf = replaceVars(vectBool, listaDeVars);
 
                 linhasDoIf.add(linhaDoIf);
-                for(int j = 1; !linhaDoIf.startsWith("endif"); j++){
+                int j;
+                for(j = 1; !linhaDoIf.startsWith("endif"); j++){
 
                     linhaDoIf = linhas.get(i+j);
-                    linhasDoIf.add(linha);
+                    linhasDoIf.add(linhaDoIf);
                 }
-
+                i = i+j;
+                Interpretador.Executa(listaDeVars, linhasDoIf);
+            
             }
             else if (linha.startsWith("while")){
 
@@ -189,19 +178,6 @@ public class Interpretador {
             }
 
         }
-
-
-
-
-
-
-
-
-        for (int i = 0; i<listaDeVars.size(); i++) {
-                    System.out.println("    "+listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
-                }
-                System.out.println("    "+listaDeVars.size());
-
 
         return;
         

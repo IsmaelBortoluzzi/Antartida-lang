@@ -31,9 +31,13 @@ public class Main {
 
         List<Variavel> listaDeVars = new LinkedList<>();
  
-        Interpretador Interpreta = new Interpretador(listaDeVars,linhas);
-        Interpreta.Executa();
+        //Interpretador Interpreta = new Interpretador(listaDeVars,linhas);
+        Interpretador.Executa(listaDeVars, linhas);
         
+        for (int i = 0; i<listaDeVars.size(); i++) {
+            System.out.println("    "+listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
+        }
+        System.out.println("    "+listaDeVars.size());
 
 /*
 
