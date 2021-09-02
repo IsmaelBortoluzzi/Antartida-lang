@@ -18,8 +18,7 @@ public class Condicional {
 
         if(ExpressionParser.evaluate(this.condiçao,0)){
 
-            Interpretador interpretador = new Interpretador(listaDeVars,linhas);
-            interpretador.Executa();
+            Interpretador.Executa(listaDeVars, linhas);
             return 1;
 
         }
