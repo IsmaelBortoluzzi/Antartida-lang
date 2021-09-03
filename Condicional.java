@@ -3,21 +3,23 @@ import java.util.ArrayList;
 
 public class Condicional {
 
-    private String condiçao;
+    private String condicao;
     private ArrayList<String> linhas;
     private List<Variavel> listaDeVars;
 
 
-    public Condicional(String condiçao, ArrayList<String> linhas, List<Variavel> listaDeVars) {
-        this.condiçao = condiçao;
+    public Condicional(String condicao, ArrayList<String> linhas, List<Variavel> listaDeVars) {
+        this.condicao = condicao;
         this.linhas = linhas;
         this.listaDeVars = listaDeVars;
     }
 
     public int Evaluate(){
 
-        if(ExpressionParser.evaluate(this.condiçao,0)){
+        
+        if(ExpressionParser.evaluate(this.condicao,0,0)){
 
+            System.out.println(this.condicao);
             Interpretador.Executa(listaDeVars, linhas);
             return 1;
 

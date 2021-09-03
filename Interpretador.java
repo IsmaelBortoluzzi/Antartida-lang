@@ -17,6 +17,40 @@ public class Interpretador {
         
         return String.join("", vect);
     }
+
+    private static String condicao(String linha,List<Variavel> listaDeVars){
+
+        linha = linha.trim();
+        String condicao = linha.substring(7);
+        condicao = condicao.trim();
+
+        String[] vectBool = condicao.split("'");
+        condicao = replaceVars(vectBool, listaDeVars);
+        return condicao;
+
+    }
+    
+    private static int funcaoIf(int i, ArrayList<String> linhas,List<Variavel> listaDeVars, String condicao){
+
+        int j;
+        ArrayList<String> linhasDoIf = new ArrayList<>();
+        if (ExpressionParser.evaluate(condicao,0,0)){
+            for(j = 1;;j++){
+                String linha = linhas.get(i+j);
+                if(linha.startsWith("startif")){
+                    String condicaoif = condicao(linha,listaDeVars);
+                    funcaoIf(i+j,linhas,listaDeVars,condicaoif);
+                } else if(linha.startsWith("endif")){
+                    Condicional c = new Condicional(condicao,linhasDoIf,listaDeVars);
+                    c.Evaluate();
+                    return i+j;
+                } else {
+                    linhasDoIf.add(linhas.get(i+j));
+                }
+            }
+        }
+        return i;
+    }
     
 
     public static void Executa(List<Variavel> listaDeVars, ArrayList<String> linhas){
@@ -148,22 +182,9 @@ public class Interpretador {
             }
             else if (linha.startsWith("startif")) {
 
-                ArrayList<String> linhasDoIf = new ArrayList<>();
-                String linhaDoIf = linha.substring(7);
-                linhaDoIf = linhaDoIf.trim();
+                String condicao = condicao(linha, listaDeVars);
+                i = funcaoIf(i,linhas,listaDeVars,condicao);
 
-                String[] vectBool = linhaDoIf.split("'");
-                linhaDoIf = replaceVars(vectBool, listaDeVars);
-
-                linhasDoIf.add(linhaDoIf);
-                int j;
-                for(j = 1; !linhaDoIf.startsWith("endif"); j++){
-
-                    linhaDoIf = linhas.get(i+j);
-                    linhasDoIf.add(linhaDoIf);
-                }
-                i = i+j;
-                Interpretador.Executa(listaDeVars, linhasDoIf);
             
             }
             else if (linha.startsWith("while")){
