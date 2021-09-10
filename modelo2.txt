@@ -1,0 +1,58 @@
+int a = 27
+int b=4
+str p="lagarto"
+str p = "leopardo"
+att b=a
+prints $b
+prints;
+
+real arrois = 23.3
+real feijao = 34.984
+att arrois = $'feijao' * 2 / 2 * 'arrois'
+att feijao = $   'feijao' + 1
+att a = $'a' / 2
+att b = $2*2-3
+
+prints "Abacaxi dourado com arrois parmesao"
+prints;
+prints $feijao
+prints;
+
+
+startif 'feijao' > 3
+
+    startif 2>1
+        prints "2 é de fato maior q 1"
+        startif 3>1
+            startif 4>1
+                prints;
+                prints "4 é de fato maior q 1"
+                startif 5>1
+                    prints;
+                    prints "5 é de fato maior q 1"
+                    startif 6<1
+                        prints;
+                        prints "6 é de fato maior q 1"
+                    endif
+                    startif 7>1
+                        prints;
+                        prints "7 eh de fato maior q 1"
+                    endif
+                endif
+            endif
+            prints;
+            prints "3 é de fato maior q 1"
+        endif
+    endif
+
+    int jagunço = 37
+    str lenhador = "Cuidado com o leaozinho baio ai no mato"
+    prints;
+    prints $lenhador
+    prints;
+    prints "oi" 
+    prints;
+    prints$jagunço
+    prints;
+endif
+  

@@ -42,7 +42,7 @@ public class ExpressionParser
             String right = s.substring(op[1]).trim();
             String oper = s.substring(start, op[1]).trim();
             int logType = logicalOperatorType(oper);
-            System.out.println("PARSE: Left: \"" + left + "\" Right: \"" + right + "\" Operator: \"" + oper + "\"");
+            //System.out.println("PARSE: Left: \"" + left + "\" Right: \"" + right + "\" Operator: \"" + oper + "\"");
             if (logType == 0) // encounters OR- recurse
                     return parseWithStrings(left) || parseWithStrings(right);
             else if (logType == 1) // encounters AND- recurse
@@ -200,7 +200,7 @@ public class ExpressionParser
             String left = s.substring(0, start).trim();
             String right = s.substring(op[1]).trim();
             String oper = s.substring(start, op[1]).trim();
-            System.out.println("MATH:  Left: \"" + left + "\" Right: \"" + right + "\" Operator: \"" + oper + "\"");
+            //System.out.println("MATH:  Left: \"" + left + "\" Right: \"" + right + "\" Operator: \"" + oper + "\"");
             if (containsMathematicalOperator(left))
                     left = "" + parseMathematicalExpression(left);
             if (containsMathematicalOperator(right))

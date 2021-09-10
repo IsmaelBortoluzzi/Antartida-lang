@@ -1,4 +1,5 @@
 import java.util.List;
+
 import java.util.ArrayList;
 
 public class Interpretador {
@@ -10,16 +11,26 @@ public class Interpretador {
             for (int k = 0; k<vect.length; k++) {
                 if (vect[k].equals(v.getName())) {
                     vect[k] = vect[k].replaceAll(v.getName(), v.getValorAsString());
-                }
-                
+                }        
             }
         }
         
         return String.join("", vect);
     }
     
+    private static String condicao(String linha,List<Variavel> listaDeVars){
 
-    public static void Executa(List<Variavel> listaDeVars, ArrayList<String> linhas){
+        linha = linha.trim();
+        String condicao = linha.substring(7);
+        condicao = condicao.trim();
+
+        String[] vectBool = condicao.split("'");
+        condicao = replaceVars(vectBool, listaDeVars);
+        return condicao;
+
+    }
+
+    public static void Executa(List<Variavel> listaDeVars, ArrayList<String> linhas) throws Exception{
 
         for (int i = 0; i < linhas.size(); i++) {
             
@@ -28,7 +39,7 @@ public class Interpretador {
             if(linhas.isEmpty() || linha.startsWith("//")) continue;
             
             String[] splitted;
-            linha = linha.trim();
+            
 
             if (linha.startsWith("int")) { 
 
@@ -148,39 +159,48 @@ public class Interpretador {
             }
             else if (linha.startsWith("startif")) {
 
-                ArrayList<String> linhasDoIf = new ArrayList<>();
-                String linhaDoIf = linha.substring(7);
-                linhaDoIf = linhaDoIf.trim();
+                String condicao = condicao(linha, listaDeVars);
 
-                String[] vectBool = linhaDoIf.split("'");
-                linhaDoIf = replaceVars(vectBool, listaDeVars);
+                if(ExpressionParser.evaluate(condicao, 0, 0)) {
 
-                linhasDoIf.add(linhaDoIf);
-                int j;
-                for(j = 1; !linhaDoIf.startsWith("endif"); j++){
+                } else {
+                    int j = i+1;
+                    int numIfs = 0;
 
-                    linhaDoIf = linhas.get(i+j);
-                    linhasDoIf.add(linhaDoIf);
+                    while(true) {
+
+                        if(linhas.get(j).equals("endif") && numIfs==0){
+                            
+                            i = j;
+                            break;
+
+                        } else if (linhas.get(j).equals("endif") && numIfs!=0) {
+                            numIfs--;
+                        }
+                        if(linhas.get(j).startsWith("startif")) {
+                            
+                            numIfs++;
+                        }
+
+                        j++;
+                    }
                 }
-                i = i+j;
-                Interpretador.Executa(listaDeVars, linhasDoIf);
+            }
             
-            }
-            else if (linha.startsWith("while")){
-
+            else if (linha.startsWith("loopsif")){
+                
+                int numWhiles = 0;
+                String condicao = condicao(linha, listaDeVars);
                 ArrayList<String> linhasDoWhile = new ArrayList<>();
-                String linhaDoWhile = linha;
-                for(int j = 1; !linhaDoWhile.startsWith("endif"); j++){
+                for(int k = i;;){}
 
-                    linhaDoWhile = linhas.get(i+j);
-                    linhasDoWhile.add(linha);
-                }
+                //while(ExpressionParser.evaluate(condicao, 0, 0)) {
+                
+                    //condicao = condicao(linha, listaDeVars);    
+                //}
+
+
             }
-
-        }
-
-        return;
-        
+        }       
     }
-
 }
