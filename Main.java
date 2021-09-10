@@ -13,7 +13,7 @@ public class Main {
 
         //System.out.println(StringUtils.isNumeric("23"));
         
-        String path = "modelo2.txt";
+        String path = "modelo.txt";
         ArrayList<String> linhas = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -31,11 +31,8 @@ public class Main {
 
         List<Variavel> listaDeVars = new LinkedList<>();
  
-        try {
-            Interpretador.Executa(listaDeVars, linhas);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        //Interpretador Interpreta = new Interpretador(listaDeVars,linhas);
+        Interpretador.Executa(listaDeVars, linhas);
         
         for (int i = 0; i<listaDeVars.size(); i++) {
             System.out.println("    "+listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
