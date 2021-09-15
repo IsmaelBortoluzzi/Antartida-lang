@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 //import java.lang.Object;
 //import org.apache.commons.lang3.StringUtils;
 import java.io.BufferedReader;
@@ -31,12 +30,17 @@ public class Main {
 
         List<Variavel> listaDeVars = new LinkedList<>();
 
-        try {
-            Interpretador.Executa(listaDeVars, linhas);
-        } catch(Exception e) {
-            System.out.println("Ocorreu um erro sintático!");
-            e.printStackTrace();
-        }
+        double e = Contas.eval("10+9*4");
+        //String e = "(10+2)";
+        //e = e.substring(e.indexOf("(")+1, e.lastIndexOf(")"));
+        System.out.println(e);
+
+       // try {
+       //     Interpretador.Executa(listaDeVars, linhas);
+       // } catch(Exception e) {
+       //     System.out.println("Ocorreu um erro sintático!");
+       //     e.printStackTrace();
+       // }
         
         //for (int i = 0; i<listaDeVars.size(); i++) {
         //    System.out.println("    "+listaDeVars.get(i).getName() + ": " + listaDeVars.get(i).getValorAsString());
