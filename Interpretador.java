@@ -189,17 +189,55 @@ public class Interpretador {
             
             else if (linha.startsWith("loopsif")){
                 
-                int numWhiles = 0;
                 String condicao = condicao(linha, listaDeVars);
-                ArrayList<String> linhasDoWhile = new ArrayList<>();
-                for(int k = i;;){}
-
-                //while(ExpressionParser.evaluate(condicao, 0, 0)) {
                 
-                    //condicao = condicao(linha, listaDeVars);    
-                //}
+                if(ExpressionParser.evaluate(condicao, 0, 0)) {
 
+                } 
+                else {
+                    int k = i+1;
+                    int numWhiles = 0;
 
+                    while(true) {
+
+                        if(linhas.get(k).equals("endloop") && numWhiles==0){
+                            
+                            i = k+1;
+                            break;
+
+                        } else if (linhas.get(k).equals("endloop") && numWhiles!=0) {
+                            numWhiles--;
+                        }
+                        if(linhas.get(k).startsWith("loopsif")) {
+                            
+                            numWhiles++;
+                        }
+
+                        k++;
+                    }
+                }
+            }
+            else if(linha.startsWith("endloop")) {
+
+                int l = i-1;
+                int numWhiles = 0;
+
+                while(true) {
+
+                    if(linhas.get(l).startsWith("loopsif") && numWhiles==0) {
+                        i = l;
+                        break;
+                        
+                    } 
+                    else if (linhas.get(l).equals("endloop") && numWhiles!=0) {
+                        numWhiles++;
+                    }
+                    if(linhas.get(l).startsWith("loopsif") && numWhiles!=0) {
+                        numWhiles--;
+                        
+                    }       
+                    l--;
+                } 
             }
         }       
     }
