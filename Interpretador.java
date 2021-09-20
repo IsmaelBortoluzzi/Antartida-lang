@@ -114,7 +114,7 @@ public class Interpretador {
                     
                     for (Variavel v : listaDeVars) {
                         if (splitted[0].equals(v.getName())) {
-                            v.setValor(Double.toString(Operacoes.eval(splitted[1])));
+                            v.setValor(Double.toString(Contas.eval(splitted[1])));
                         }
                     } 
                 } 
@@ -161,7 +161,7 @@ public class Interpretador {
 
                 String condicao = condicao(linha, listaDeVars);
 
-                if(ExpressionParser.evaluate(condicao, 0, 0)) {
+                if(Expressions.evaluate_Expression(condicao)) {
 
                 } else {
                     int j = i+1;
@@ -191,7 +191,7 @@ public class Interpretador {
                 
                 String condicao = condicao(linha, listaDeVars);
                 
-                if(ExpressionParser.evaluate(condicao, 0, 0)) {
+                if(Expressions.evaluate_Expression(condicao)) {
 
                 } 
                 else {
