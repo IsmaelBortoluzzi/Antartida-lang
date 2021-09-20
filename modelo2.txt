@@ -8,16 +8,97 @@ prints;
 
 real arrois = 23.3
 real feijao = 34.984
-att arrois = $'feijao' * 2 / 2 * 'arrois'
+att arrois = $'feijao' * 2 / 'arrois'
 att feijao = $   'feijao' + 1
-att a = $'a' / 2
+att a = $   'a' / 2
 att b = $2*2-3
 
 prints "Abacaxi dourado com arrois parmesao"
 prints;
+prints $arrois
+prints;
 prints $feijao
 prints;
+prints $a
+prints;
+prints $b
+prints;
 
+int i = 0
+loopsif 'i' <= 5
+    
+    prints;
+    
+    int k = 0
+    loopsif 'k' < 3
+        prints $k
+        prints;
+        att k = $'k'+1
+    endloop
+
+    prints;
+    prints;
+    prints;
+    prints;
+    prints;
+
+    int j = 0
+    loopsif 'j' < 3
+
+        startif 'feijao' > 3
+
+            startif 2>1
+                prints "2 é de fato maior q 1"
+                startif 3>1
+                    startif 4>1
+                        prints;
+                        prints "4 é de fato maior q 1"
+                        startif 5>1
+                            prints;
+                            prints "5 é de fato maior q 1"
+                            startif 6<1
+                                prints;
+                                prints "6 é de fato maior q 1"
+                            endif
+                            startif 7>1
+                                prints;
+                                prints "7 eh de fato maior q 1"
+                            endif
+                        endif
+                    endif
+                    prints;
+                    prints "3 é de fato maior q 1"
+                endif
+            endif
+
+            int jagunço = 37
+            str lenhador = "Cuidado com o leaozinho baio ai no mato"
+            prints;
+            prints $lenhador
+            prints;
+            prints "oi" 
+            prints;
+            prints$jagunço
+            prints;
+        endif
+        
+        att j = $'j'+1
+    endloop
+    
+    prints;
+    prints;
+    prints $i
+    prints;
+    att i = $'i'+1
+
+endloop
+prints "funfou?"
+prints;
+prints;
+prints;
+prints;
+prints;
+prints;
 
 startif 'feijao' > 3
 

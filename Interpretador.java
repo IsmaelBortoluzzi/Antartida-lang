@@ -1,5 +1,4 @@
 import java.util.List;
-
 import java.util.ArrayList;
 
 public class Interpretador {
@@ -40,7 +39,6 @@ public class Interpretador {
             
             String[] splitted;
             
-
             if (linha.startsWith("int")) { 
 
                 linha = linha.substring(3);
@@ -64,7 +62,6 @@ public class Interpretador {
                 linha = linha.substring(4);
                 linha = linha.replaceAll(" ", "");
                 splitted = linha.split("=");
-
 
                 boolean jaExiste = false;
                 for (Variavel v : listaDeVars) {
@@ -106,12 +103,12 @@ public class Interpretador {
                 splitted = linha.split("=");
                 
                 if (splitted[1].startsWith("$")) {
-                    splitted[1] = splitted[1].trim();
+                
                     splitted[1] = splitted[1].substring(1);
                     String[] vectConta = splitted[1].split("'");
 
                     splitted[1] = replaceVars(vectConta, listaDeVars);
-                    
+
                     for (Variavel v : listaDeVars) {
                         if (splitted[0].equals(v.getName())) {
                             v.setValor(Double.toString(Contas.eval(splitted[1])));
@@ -202,7 +199,7 @@ public class Interpretador {
 
                         if(linhas.get(k).equals("endloop") && numWhiles==0){
                             
-                            i = k+1;
+                            i = k;
                             break;
 
                         } else if (linhas.get(k).equals("endloop") && numWhiles!=0) {
@@ -225,20 +222,20 @@ public class Interpretador {
                 while(true) {
 
                     if(linhas.get(l).startsWith("loopsif") && numWhiles==0) {
-                        i = l;
+                        i = l-1;
                         break;
                         
                     } 
-                    else if (linhas.get(l).equals("endloop") && numWhiles!=0) {
+                    else if (linhas.get(l).equals("endloop")) {
                         numWhiles++;
                     }
                     if(linhas.get(l).startsWith("loopsif") && numWhiles!=0) {
                         numWhiles--;
                         
-                    }       
+                    }     
                     l--;
-                } 
+                }
             }
-        }       
+        }
     }
 }
