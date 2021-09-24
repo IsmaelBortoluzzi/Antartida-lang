@@ -6,16 +6,16 @@ att b=a
 prints $b
 prints;
 
-real arrois = 23.3
+real arroz = 23.3
 real feijao = 34.984
-att arrois = $'feijao' * 2 / 'arrois'
+att arroz = $'feijao' * 2 / 'arroz'
 att feijao = $   'feijao' + 1
 att a = $   'a' / 2
 att b = $2*2-3
 
-prints "Abacaxi dourado com arrois parmesao"
+prints "Abacaxi dourado e doce eh bom."
 prints;
-prints $arrois
+prints $arroz
 prints;
 prints $feijao
 prints;
@@ -48,17 +48,17 @@ loopsif 'i' <= 5
         startif 'feijao' > 3
 
             startif 2>1
-                prints "2 é de fato maior q 1"
+                prints "2 eh de fato maior q 1"
                 startif 3>1
                     startif 4>1
                         prints;
-                        prints "4 é de fato maior q 1"
+                        prints "4 eh de fato maior q 1"
                         startif 5>1
                             prints;
-                            prints "5 é de fato maior q 1"
+                            prints "5 eh de fato maior q 1"
                             startif 6<1
                                 prints;
-                                prints "6 é de fato maior q 1"
+                                prints "6 eh de fato maior q 1"
                             endif
                             startif 7>1
                                 prints;
@@ -103,17 +103,17 @@ prints;
 startif 'feijao' > 3
 
     startif 2>1
-        prints "2 é de fato maior q 1"
+        prints "2 eh de fato maior q 1"
         startif 3>1
             startif 4>1
                 prints;
-                prints "4 é de fato maior q 1"
+                prints "4 eh de fato maior q 1"
                 startif 5>1
                     prints;
-                    prints "5 é de fato maior q 1"
+                    prints "5 eh de fato maior q 1"
                     startif 6<1
                         prints;
-                        prints "6 é de fato maior q 1"
+                        prints "6 eh de fato maior q 1"
                     endif
                     startif 7>1
                         prints;
@@ -122,7 +122,7 @@ startif 'feijao' > 3
                 endif
             endif
             prints;
-            prints "3 é de fato maior q 1"
+            prints "3 eh de fato maior q 1"
         endif
     endif
 
