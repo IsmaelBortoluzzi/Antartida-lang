@@ -10,7 +10,7 @@ public class Interpretador {
             for (int k = 0; k<vect.length; k++) {
                 if (vect[k].equals(v.getName())) {
                     vect[k] = vect[k].replaceAll(v.getName(), v.getValorAsString());
-                }        
+                }
             }
         }
         

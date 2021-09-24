@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-        String path = "modelo2.txt";
+        String path = args[0];
         ArrayList<String> linhas = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
