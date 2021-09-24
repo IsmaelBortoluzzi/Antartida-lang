@@ -21,7 +21,7 @@ public class Interpretador {
 
         linha = linha.trim();
         String condicao = linha.substring(7);
-        condicao = condicao.trim();
+        condicao = condicao.replaceAll(" ", "");
 
         String[] vectBool = condicao.split("'");
         condicao = replaceVars(vectBool, listaDeVars);

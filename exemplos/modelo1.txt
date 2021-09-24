@@ -6,14 +6,14 @@ att b=a
 prints $b
 prints;
 
-real arrois = 23.3
+real arroz = 23.3
 real feijao = 34.984
-att arrois = $'feijao' * 2 / 2 * 'arrois'
+att arroz = $'feijao' * 2 * 2 / 'arroz'
 att feijao = $   'feijao' + 1
 att a = $'a' / 2
 att b = $2*2-3
 
-prints "Abacaxi dourado com arrois parmesao"
+prints "Abacaxi dourado doce eh bom"
 prints;
 prints $feijao
 prints;
@@ -21,13 +21,13 @@ prints;
 
 startif 'feijao'<3
 
-    int jagunço = 37
+    int java = 37
     str lenhador = "Cuidado com o leaozinho baio ai no mato"
     prints;
     prints $lenhador
     prints;
     prints "oi" 
     prints;
-    prints$jagunço
+    prints$java
     prints;
 endif

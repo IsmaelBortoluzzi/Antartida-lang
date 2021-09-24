@@ -1,0 +1,16 @@
+int a = 0
+
+startif 'a' > 1
+
+    prints "Maior"
+    prints;
+
+endif
+
+startif ! 'a' > 1
+
+    prints "Menor"
+    prints;
+    
+endif
+

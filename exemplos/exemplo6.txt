@@ -1,0 +1,10 @@
+int a = 0
+int b = 0
+
+att a = $1+1
+att b = $'a' + 3
+
+prints $a
+prints;
+prints $b
+prints;

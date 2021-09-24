@@ -1,0 +1,41 @@
+int i = 0
+int j = 0
+att j = i
+
+loopsif 'i' < 3
+
+    startif 'i' == 0
+
+        prints "Zero"
+        prints;
+
+    endif
+
+    startif !'i'==0
+
+        prints "Outro"
+        prints;
+
+    endif
+
+    att i = $'i'+ 1
+
+endloop
+
+startif 'i' == 3
+
+    startif 'j' == 0
+
+        prints "Ok!"
+        prints;
+
+    endif
+
+    startif !'j' == 0
+
+        prints "Erro"
+        prints;
+
+    endif
+
+endif
