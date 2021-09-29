@@ -58,7 +58,7 @@ Basta "Redeclarar"
 
 1. multiplicação
 2. divisão
-3. módulo
+3. resto
 4. soma
 5. subtração
 <br>
